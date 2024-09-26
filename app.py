@@ -212,7 +212,7 @@ if tabs == "Trending Videos":
     trending_videos=pd.DataFrame(get_trending_videos(API_KEY))
 
     # Convert numerical columns to int data type
-    trending_videos[['category_id','view_count','like_count','favorite_count','comment_count']]=trending_videos[['category_id','view_count','like_count','favorite_count','comment_count']].astype(int)
+    trending_videos[['category_id','view_count','like_count','favorite_count','comment_count']]=trending_videos[['category_id','view_count','like_count','favorite_count','comment_count']].fillna(0).astype(int)
 
     # fill missing descriptions with "No description"
     trending_videos['description'].fillna('No description', inplace=True)
@@ -637,7 +637,7 @@ if tabs == "Channel Videos":
                 st.success("Channel Found")
                 video_ids=get_videos_ids(channel_id)
                 videos_data=pd.DataFrame(get_video_data(video_ids))
-                videos_data[['view_count','like_count','comment_count','category_id']]=videos_data[['view_count','like_count','comment_count','category_id']].astype(int)
+                videos_data[['view_count','like_count','comment_count','category_id']]=videos_data[['view_count','like_count','comment_count','category_id']].fillna(0).astype(int)
                 videos_data['published_at'] = pd.to_datetime(videos_data['published_at'])
                 videos_data['duration'] = pd.to_timedelta(videos_data['duration'], errors='coerce')
 
