@@ -5,3 +5,4 @@ plotly-express
 isodate
 DateTime
 pybase64
+streamlit_option_menu
