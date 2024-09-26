@@ -640,6 +640,22 @@ if tabs == "Channel Videos":
                 videos_data[['view_count','like_count','comment_count','category_id']]=videos_data[['view_count','like_count','comment_count','category_id']].fillna(0).astype(int)
                 videos_data['published_at'] = pd.to_datetime(videos_data['published_at'])
                 videos_data['duration'] = pd.to_timedelta(videos_data['duration'], errors='coerce')
+                def get_category_mapping():
+                    request = youtube.videoCategories().list(
+                        part='snippet',
+                        regionCode='IN'
+                    )
+                    response = request.execute()
+                    category_mapping = {}
+                    for item in response['items']:
+                        category_id = int(item['id'])
+                        category_name = item['snippet']['title']
+                        category_mapping[category_id] = category_name
+                    return category_mapping
+                
+                # get the category mapping
+                category_mapping = get_category_mapping()
+                videos_data['category_name'] = videos_data['category_id'].map(category_mapping)
 
                 col1,col2=st.columns([2,2])
                 with col1:
@@ -799,6 +815,29 @@ if tabs == "Channel Videos":
                     height=700, width=1400, color=by_date['view_count'], color_continuous_scale='matter'
                 )
                 fig.update_layout(xaxis_title='Uploaded Date', yaxis_title='View Count')
+                st.plotly_chart(fig)
+
+
+  #---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+
+                st.markdown(" ")
+                st.markdown(" ")
+                st.markdown("""
+                <div style="font-family: Arial; line-height: 1.6; padding: 20px; background-color: #f9f9f9; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+                    <h1 style="color: #FF0000; font-size: 30px;">Videos in Each Category</h1>
+                </div>
+                """, unsafe_allow_html=True)
+
+                category_counts = videos_data['category_name'].value_counts()
+                fig = px.pie(
+                    category_counts,
+                    names=category_counts.index,  # Categories
+                    values=category_counts.values,  # Proportions (number of videos)
+                    title='Proportion of Videos by Category',
+                    labels={'category_name': 'Category', 'values': 'Video Count'}, color_discrete_sequence=px.colors.qualitative.Pastel
+                )
+                fig.update_layout(title='Proportion of Videos in Each Category', height=600, width=800)
+
                 st.plotly_chart(fig)
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
