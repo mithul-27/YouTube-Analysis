@@ -831,8 +831,8 @@ if tabs == "Channel Videos":
                 category_counts = videos_data['category_name'].value_counts()
                 fig = px.pie(
                     category_counts,
-                    names=category_counts.index,  # Categories
-                    values=category_counts.values,  # Proportions (number of videos)
+                    names=category_counts.index,
+                    values=category_counts.values, 
                     title='Proportion of Videos by Category',
                     labels={'category_name': 'Category', 'values': 'Video Count'}, color_discrete_sequence=px.colors.qualitative.Pastel
                 )
