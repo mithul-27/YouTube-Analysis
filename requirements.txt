@@ -3,5 +3,5 @@ matplotlib
 seaborn
 plotly-express
 isodate
-datetime
-base64
+DateTime
+pybase64
