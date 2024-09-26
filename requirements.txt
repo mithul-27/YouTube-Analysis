@@ -1,0 +1,7 @@
+google-api-python-client
+matplotlib
+seaborn
+plotly-express
+isodate
+datetime
+base64
