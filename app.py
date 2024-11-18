@@ -983,7 +983,7 @@ if tabs == "Channel Videos":
                 st.markdown(" ")
                 st.markdown("""
                 <div style="font-family: Arial; line-height: 1.6; padding: 20px; background-color: #f9f9f9; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
-                    <h1 style="color: #FF0000; font-size: 30px;">Number of Uploads in Each Month</h1>
+                    <h1 style="color: #FF0000; font-size: 30px;">Top 10 Liked and Commented Videos</h1>
                 </div>
                 """, unsafe_allow_html=True)
 
