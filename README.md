@@ -1,6 +1,7 @@
 # YouTube Analysis
 
 Visit: https://youtube-analysis-st.streamlit.app/
+Please press "Yes, get this app back up" and wait for less than a minute in case the site is inactive.
 
 This project provides an in-depth analysis of YouTube trending videos and channel data using various Python libraries like `Pandas`, `Matplotlib`, `Seaborn`, and `Plotly`. It pulls data using the YouTube Data API and displays interactive visualizations with the help of `Streamlit`. The project offers insights into video performance, viewership patterns, and channel statistics in an easy-to-navigate web app.
 
