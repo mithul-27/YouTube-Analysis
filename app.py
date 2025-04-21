@@ -236,7 +236,7 @@ if tabs == "Trending Videos":
             
             for i in range(3):
                 with cols[i]:
-                    st.image(top3['thumbnail'][i], use_column_width=True)
+                    st.image(top3['thumbnail'][i], use_container_width=True)
                     st.subheader(top3['title'][i])
                     st.markdown(f"<p style='font-size: 20px; text-align: center;'><strong>Channel:</strong> {top3['channel_title'][i]}</p>", 
                         unsafe_allow_html=True)
@@ -782,7 +782,7 @@ if tabs == "Channel Videos":
                                 
                         for i in range(3):
                             with cols[i]:
-                                st.image(top3.iloc[i]['thumbnails'], use_column_width=True)
+                                st.image(top3.iloc[i]['thumbnails'], use_container_width=True)
                                 st.subheader(top3.iloc[i]['video_name'])
                                 st.markdown(f"<p style='font-size: 20px; text-align: center;'><strong>Views:</strong> {top3.iloc[i]['view_count']}</p>", 
                                     unsafe_allow_html=True)
